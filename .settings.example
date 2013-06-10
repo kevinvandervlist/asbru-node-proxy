@@ -1,9 +1,9 @@
-# The directory containing the chrome extension
-# e.g. ~/src/chrome-extension
-EXT_DIR=/export/scratch1/src/extension
+# The directory containing the project
+# e.g. ~/src/hoocsd-node-proxy
+PROJ_DIR=/home/kevin/src/hoocsd-node-proxy
 
 # The build folder
-DEST_DIR=${EXT_DIR}/build
+DEST_DIR=${PROJ_DIR}/build
 
 # Source folder
-SRC_DIR=${EXT_DIR}/src
+SRC_DIR=${PROJ_DIR}/src

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Debugging assist</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io.connect('http://localhost');
+    socket.on("debug", function(data) {
+      console.log("received data: ");
+      console.log(data);
+		});
+    socket.emit("debug", {seq: 1, type: "request", command: "version"});
+    socket.emit("debug", {seq: 2, type: "request", command: "scripts"});
+		</script>
+</head>
+<body>
+	<p>Debugging assist. See the developer console for received data.</p>
+</body>
+</html>

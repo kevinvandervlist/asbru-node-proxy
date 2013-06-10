@@ -16,5 +16,14 @@
 </head>
 <body>
 	<p>Debugging assist. See the developer console for received data.</p>
+	<pre>
+var socket = io.connect('http://localhost');
+socket.on("debug", function(data) {
+  console.log("received data: ");
+  console.log(data);
+});
+socket.emit("debug", {seq: 1, type: "request", command: "version"});
+socket.emit("debug", {seq: 2, type: "request", command: "scripts"});
+	</pre>
 </body>
 </html>

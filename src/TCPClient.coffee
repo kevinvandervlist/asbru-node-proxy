@@ -29,9 +29,13 @@ class TCPClient
     @dataCallback = null
     @queue = []
     @connect() if autoconnect
+    @disconnectCallback = null
 
   setDataCallback: (cb) ->
     @dataCallback = cb
+
+  setDisconnectCallback: (cb) ->
+    @disconnectCallback = cb
 
   connect: ->
     @conn = @net.connect {host: @host, port: @port}
@@ -68,6 +72,7 @@ class TCPClient
 
   _onEnd: =>
     @conn.end()
+    @disconnectCallback() if @disconnectCallback?
 
   _onClose: =>
     @connected = false

@@ -66,7 +66,13 @@ io.sockets.on "connection", (socket) ->
     socket.emit "debug", data
   cm.setOutIO f
 
+disconnect = ->
+  console.log "Disconnected from node (at #{node_host}:#{node_port})."
+  process.exit()
+
 # Set up the TCP handling as well
 tcp = new TCPClient node_host, node_port
 tcp.setDataCallback cm.inNode
+tcp.setDisconnectCallback disconnect
+
 cm.setOutNode tcp.sendJSON
